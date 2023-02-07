@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Anton', sans-serif;
-  src: url("/font/Anton-Regular.ttf");
-}
-@font-face {
   font-family: 'iconfont';
   src: url('/font/iconfont.ttf') format('truetype');
 }
