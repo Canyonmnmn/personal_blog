@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+html,body{
+  overflow-y:overlay ;
+}
 @font-face {
   font-family: 'iconfont';
   src: url('/font/iconfont.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Cedarville Cursive';
+  src: url("/font/CedarvilleCursive-Regular.ttf");
 }

@@ -3,14 +3,17 @@
  * @Author: jianguo
  * @Date: 2023-02-06 21:41:41
  * @LastEditors: jianguo
- * @LastEditTime: 2023-02-07 11:29:18
+ * @LastEditTime: 2023-02-07 22:02:49
  */
 import Link from "next/link";
 import Image from "next/image";
 import { Popover, Transition } from "@headlessui/react"
 import clsx from "clsx";
-import { Fragment } from 'react'
+import { Fragment, ReactNode, useEffect, useState } from 'react'
 
+type dataType = {
+    children: ReactNode
+}
 function MobileNavIcon({ open }) {
     return (
         <svg
@@ -81,36 +84,42 @@ function MobileNavigation() {
     )
 }
 
-export default function Header() {
+export default function Header({ children }: dataType) {
+    const [mode, setMode] = useState("light")
+
+    useEffect(() => {
+        localStorage.getItem('mode') &&
+            setMode( localStorage.getItem('mode') )
+    }, []);
+    function changeMode() {
+        setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
+        localStorage.setItem('mode', mode === 'light' ? 'dark' : 'light');
+    }
     return (
-        <div className="mx-auto px-4 py-10">
-            <nav className="relative flex items-center gap-5 z-50">
-                <Image 
-                    src="/xiong.png" 
-                    width={40}
-                    height={40}
-                    priority
-                    className="mr-auto"
-                    alt={""}>
-                </Image>
+        <div className="mx-auto px-6 py-10">
+            <nav className="relative flex items-center gap-5 mb-10">
+                <span className="font-Cedarville mr-auto text-2xl dark:text-teal-200">Canyon</span>
                 <Link href="/" className="hidden md:flex items-center text-xl">Me</Link>
-                <Link href="/" className="hidden md:flex items-center text-xl">Blog</Link>
-                <Link href="/" className="hidden md:flex items-center text-xl">Projects</Link>
+                <Link href="/blog" className="hidden md:flex items-center text-xl">Blog</Link>
+                <Link href="/projects" className="hidden md:flex items-center text-xl">Projects</Link>
                 <a
-                    href='https://github.com/kelvinqiu802'
+                    href='https://github.com/canyonmnmn'
                     rel='noreferrer'
                     target='_blank'
                     className="font-[iconfont] text-3xl"
                 >
                     &#xe885;
                 </a>
-                <span className="font-[iconfont] text-3xl">
+                <span
+                    onClick={() => changeMode()}
+                    className="font-[iconfont] text-3xl">
                     &#xe635;
                 </span>
                 <div className="md:hidden -mr-1">
                     <MobileNavigation />
                 </div>
             </nav>
+            {children}
         </div>
     )
 }

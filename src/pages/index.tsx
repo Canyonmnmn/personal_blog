@@ -3,7 +3,7 @@
  * @Author: jianguo
  * @Date: 2023-02-01 14:34:11
  * @LastEditors: jianguo
- * @LastEditTime: 2023-02-07 14:01:04
+ * @LastEditTime: 2023-02-07 17:28:39
  */
 import Head from 'next/head'
 import Image from 'next/image'
@@ -19,11 +19,13 @@ export default function Home() {
       <Head>
       <title>My Site</title>
       </Head>
-      <Header></Header>
-      <Container>
-        <Avatar></Avatar>
-        <Content></Content>
-      </Container>
+      <Header>
+        <Container>
+          <Avatar></Avatar>
+          <Content></Content>
+        </Container>
+      </Header>
+      
     </>
   )
 }
