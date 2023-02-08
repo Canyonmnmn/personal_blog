@@ -3,13 +3,14 @@
  * @Author: jianguo
  * @Date: 2023-02-06 21:41:41
  * @LastEditors: jianguo
- * @LastEditTime: 2023-02-07 22:02:49
+ * @LastEditTime: 2023-02-08 21:59:27
  */
 import Link from "next/link";
 import Image from "next/image";
 import { Popover, Transition } from "@headlessui/react"
 import clsx from "clsx";
-import { Fragment, ReactNode, useEffect, useState } from 'react'
+import { Fragment, ReactNode, useContext} from 'react'
+import { useThemeContext } from "./ThemeProvider";
 
 type dataType = {
     children: ReactNode
@@ -18,7 +19,7 @@ function MobileNavIcon({ open }) {
     return (
         <svg
             aria-hidden="true"
-            className="h-4 w-4 overflow-visible stroke-slate-700"
+            className="h-4 w-4 overflow-visible stroke-slate-700 dark:stroke-white"
             fill="none"
             strokeWidth={2}
             strokeLinecap="round"
@@ -73,7 +74,7 @@ function MobileNavigation() {
                     leaveTo="opacity-0">
                     <Popover.Panel
                         as="div"
-                        className={'absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg gap-3 tracking-tight text-slate-700 shadow-xl ring-1 ring-slate-900/5'}>
+                        className={'absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg gap-3 tracking-tight text-slate-700 dark:bg-slate-900 dark:text-white shadow-xl ring-1 ring-slate-900/5'}>
                         <Link href="/">Me</Link>
                         <Link href="/">Blog</Link>
                         <Link href="/">Projects</Link>
@@ -85,20 +86,11 @@ function MobileNavigation() {
 }
 
 export default function Header({ children }: dataType) {
-    const [mode, setMode] = useState("light")
-
-    useEffect(() => {
-        localStorage.getItem('mode') &&
-            setMode( localStorage.getItem('mode') )
-    }, []);
-    function changeMode() {
-        setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
-        localStorage.setItem('mode', mode === 'light' ? 'dark' : 'light');
-    }
+    const [ theme,setTheme ]= useThemeContext()
     return (
-        <div className="mx-auto px-6 py-10">
-            <nav className="relative flex items-center gap-5 mb-10">
-                <span className="font-Cedarville mr-auto text-2xl dark:text-teal-200">Canyon</span>
+        <div className="mx-auto px-6 py-10 dark:text-white">
+            <nav className="relative flex items-center gap-5 mb-10 ">
+                <span className="font-Cedarville mr-auto text-2xl ">Canyon</span>
                 <Link href="/" className="hidden md:flex items-center text-xl">Me</Link>
                 <Link href="/blog" className="hidden md:flex items-center text-xl">Blog</Link>
                 <Link href="/projects" className="hidden md:flex items-center text-xl">Projects</Link>
@@ -111,7 +103,7 @@ export default function Header({ children }: dataType) {
                     &#xe885;
                 </a>
                 <span
-                    onClick={() => changeMode()}
+                    onClick={() => setTheme(theme == 'light' ? "dark":"light")}
                     className="font-[iconfont] text-3xl">
                     &#xe635;
                 </span>

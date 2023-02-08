@@ -3,7 +3,7 @@
  * @Author: jianguo
  * @Date: 2023-02-07 14:21:13
  * @LastEditors: jianguo
- * @LastEditTime: 2023-02-07 18:07:19
+ * @LastEditTime: 2023-02-08 22:06:17
  */
 import Container from 'components/Container'
 import Header from 'components/Header'
@@ -12,7 +12,7 @@ import React from 'react'
 
 export default function projects() {
     return (
-        <>
+        <div className='min-h-[100vh] dark:bg-slate-900'>
             <Header>
                 <Container>
                     <p className='text-4xl font-bold mb-10 font-text1'>Study Projects</p>
@@ -59,12 +59,6 @@ export default function projects() {
                             icon='&#xe61f;'
                             repo='https://github.com/KelvinQiu802/bookstore'
                         />
-                        <Item
-                            name='your-cat'
-                            description='A website that will help you to choose the best breed of cat for you by asking you a few questions.'
-                            icon='&#xec8d;'
-                            repo='https://github.com/KelvinQiu802/your-cat'
-                        />
                     </div>
                     <p className='text-4xl font-bold'></p>
                     <p className='text-4xl font-bold mb-10 mt-10 font-text1'>Work Projects</p>
@@ -84,6 +78,6 @@ export default function projects() {
                     </div>
                 </Container>
             </Header>
-        </>
+        </div>
     )
 }

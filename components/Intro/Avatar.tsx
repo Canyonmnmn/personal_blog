@@ -8,7 +8,7 @@
 import Image from "next/image"
 function Avatar() {
     return (
-        <div className="flex gap-10">
+        <div className="flex gap-10 text-slate-900 dark:text-white">
             <Image 
             alt=""
             width={90}
@@ -18,8 +18,8 @@ function Avatar() {
             className="rounded-2xl"
             ></Image>
             <div className="flex flex-col gap-5">
-                <h1 className="text-4xl font-bold text-slate-900">JIAN GUO</h1>
-                <p className="text-xl text-slate-600">Front-End Developer / Worker / HangZhou</p>
+                <h1 className="text-4xl font-bold ">JIAN GUO</h1>
+                <p className="text-xl">Front-End Developer / Worker / HangZhou</p>
             </div>
         </div>
     )
