@@ -3,7 +3,7 @@
  * @Author: jianguo
  * @Date: 2023-02-08 20:40:46
  * @LastEditors: jianguo
- * @LastEditTime: 2023-02-08 20:44:01
+ * @LastEditTime: 2023-02-12 19:41:16
  */
 import React, { createContext, ReactNode, useContext, useState } from 'react'
 
@@ -16,7 +16,7 @@ export  function ThemeProvider({ children }: dataType) {
     const [theme, setTheme] = useState("light")
     return (
         <Context.Provider value={[theme,setTheme]}>
-            <div className={theme}>
+            <div className={theme} color-mode={theme}>
             {children}
             </div>
         </Context.Provider>

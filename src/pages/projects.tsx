@@ -3,7 +3,7 @@
  * @Author: jianguo
  * @Date: 2023-02-07 14:21:13
  * @LastEditors: jianguo
- * @LastEditTime: 2023-02-08 22:06:17
+ * @LastEditTime: 2023-02-12 14:05:01
  */
 import Container from 'components/Container'
 import Header from 'components/Header'
@@ -12,7 +12,7 @@ import React from 'react'
 
 export default function projects() {
     return (
-        <div className='min-h-[100vh] dark:bg-slate-900'>
+        <div className='min-h-[100vh] dark:bg-slate-900 transition-colors duration-500'>
             <Header>
                 <Container>
                     <p className='text-4xl font-bold mb-10 font-text1'>Study Projects</p>

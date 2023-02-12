@@ -90,7 +90,7 @@ export default function Header({ children }: dataType) {
     return (
         <div className="mx-auto px-6 py-10 dark:text-white">
             <nav className="relative flex items-center gap-5 mb-10 ">
-                <span className="font-Cedarville mr-auto text-2xl ">Canyon</span>
+                <span className="font-Cedarville mr-auto text-2xl ">Fiji</span>
                 <Link href="/" className="hidden md:flex items-center text-xl">Me</Link>
                 <Link href="/blog" className="hidden md:flex items-center text-xl">Blog</Link>
                 <Link href="/projects" className="hidden md:flex items-center text-xl">Projects</Link>
